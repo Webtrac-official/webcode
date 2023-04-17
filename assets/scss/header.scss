@@ -1,0 +1,182 @@
+header{
+  .wtrc-header{
+    .header-content{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      .wtrc-logo{
+        position: relative;
+
+        .site-title{
+          margin-bottom: 0;
+        }
+
+        .logo{
+          transition: 0.2s ease-in-out;
+        }
+
+        .sticky-logo{
+          position: absolute;
+          left: 0;
+          opacity: 0;
+          pointer-events: none;
+          transition: 0.2s ease-in-out;
+        }
+      }
+
+      .wtrc-menu{
+        .menu{
+          list-style-type: none;
+          display: flex;
+          flex-flow: row wrap;
+          gap: var(--global--menu-item-spacing);
+          margin: 0;
+
+          .menu-item{
+            position: relative;
+
+            a{
+              font-family: var(--global--menu-font-family);
+              font-size: var(--global--menu-font-size);
+              font-weight: var(--global--menu-font-weight);
+              line-height: var(--global--menu-line-height);
+              font-style: var(--global--menu-font-style);
+              color: var(--global--menu-color);
+              transition: 0.2s ease-in-out;
+
+              &:hover, &:active, &:focus{
+                color: var(--global--menu-color-active);
+              }
+            }
+
+            .sub-menu{
+              position: absolute;
+              left: -30%;
+              padding: 100px 10px 30px;
+              top: 20px;
+              list-style-type: none;
+              z-index: 10;
+              opacity: 0;
+              pointer-events: none;
+              transition: 0.2s ease-in-out;
+
+              &::before{
+                content: '';
+                background-color: #fff;
+                position: absolute;
+                bottom: 0;
+                border-radius: 5px;
+                min-width: 200px;
+                left: 0;
+                height: calc(100% - 70px);
+              }
+
+              .menu-item{
+                a{
+                  padding-left: 30px;
+                  padding-right: 30px;
+                  display: block;
+                  color: var(--global--color-black);
+                }
+
+                &:not(:first-child){
+                  a{
+                    padding-top: 10px;
+                  }
+                }
+                &:not(:last-child){                    
+                  a{
+                    padding-bottom: 10px;
+                  }
+                }
+
+                &:hover, &:active, &:focus{
+                  a{
+                    color: var(--global--color-primary);
+                  }
+                }
+              }
+            }
+
+            &.current-menu-item{
+              a{
+                color: var(--global--menu-color-active);
+              }
+            }
+
+            &:hover{
+              .sub-menu{
+                opacity: 1;
+                pointer-events: all;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.sticky{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    width: 100%;
+    transition: 0.2s ease-in-out;
+
+    &.scrolled{
+      background-color: var(--global--header-bg-color);
+      box-shadow: var(--global--header-box-shadow);
+      background-color: #fff;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+
+      .wtrc-header{
+        .header-content{
+          .wtrc-logo{
+            .logo{
+              opacity: 0;
+              pointer-events: none;
+            }
+
+            .sticky-logo{
+              opacity: 1;
+              pointer-events: all;
+            }
+          }
+
+          .wtrc-menu{
+            .menu{
+              .menu-item{
+                a{
+                  color: var(--global--menu-sticky-color);
+                }
+
+                &.current-menu-item{
+                  a{
+                    color: var(--global--menu-sticky-color-active);
+                  }
+                }
+
+                &:hover, &:active, &:focus{
+                  a{
+                    color: var(--global--menu-sticky-color-active);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.admin-bar{
+  header{
+    &.sticky{
+      top: 32px;
+    }
+  }
+}

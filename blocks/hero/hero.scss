@@ -1,0 +1,25 @@
+section.hero{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  .content{
+    max-width: 50%;
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px){
+  section.hero{
+    .content{
+      max-width: 60%;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px){
+  section.hero{
+    .content{
+      max-width: 100%;
+    }
+  }
+}
